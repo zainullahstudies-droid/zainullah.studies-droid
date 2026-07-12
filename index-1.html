@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mama Rasoi — Home-style South Asian Kitchen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700&display=swap');
+
+  :root{
+    --charcoal:#1e2620;
+    --cream:#f7f3ea;
+    --mustard:#c99a2e;
+    --forest:#2f4030;
+    --clay:#a8583c;
+    --line: rgba(247,243,234,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--charcoal);
+    color:var(--cream);
+    font-family:'Manrope',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(30,38,32,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1100px;margin:0 auto;}
+  .logo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;}
+  .logo span{color:var(--mustard);}
+  .navlinks{display:flex;gap:32px;font-size:0.95rem;}
+  .navlinks a{opacity:0.85;transition:opacity 0.2s;}
+  .navlinks a:hover{opacity:1;color:var(--mustard);}
+  .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    padding:110px 24px 90px;
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;
+  }
+  .eyebrow{
+    color:var(--mustard);text-transform:uppercase;letter-spacing:0.14em;
+    font-size:0.78rem;font-weight:700;margin-bottom:18px;display:block;
+  }
+  .hero h1{font-size:clamp(2.4rem,5vw,3.6rem);line-height:1.05;margin-bottom:22px;}
+  .hero p{opacity:0.8;font-size:1.05rem;max-width:440px;margin-bottom:32px;}
+  .btn{
+    display:inline-block;background:var(--mustard);color:var(--charcoal);
+    padding:14px 30px;border-radius:2px;font-weight:700;font-size:0.95rem;
+    transition:transform 0.2s;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-outline{
+    display:inline-block;border:1px solid var(--line);color:var(--cream);
+    padding:13px 28px;border-radius:2px;font-weight:500;margin-left:14px;font-size:0.95rem;
+  }
+  .hero-visual{
+    background:linear-gradient(160deg,var(--forest),var(--charcoal));
+    border:1px solid var(--line);
+    aspect-ratio:4/5;border-radius:4px;
+    display:flex;align-items:end;padding:28px;position:relative;overflow:hidden;
+  }
+  .hero-visual::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 70% 20%, rgba(201,154,46,0.25), transparent 60%);
+  }
+  .hero-visual .tag{
+    background:var(--charcoal);border:1px solid var(--line);
+    padding:14px 18px;border-radius:3px;font-size:0.85rem;position:relative;
+  }
+  .hero-visual .tag b{color:var(--mustard);display:block;font-family:'Fraunces',serif;font-size:1.1rem;}
+
+  /* SECTIONS */
+  section{padding:80px 0;}
+  .section-head{margin-bottom:44px;max-width:560px;}
+  .section-head .eyebrow{margin-bottom:12px;}
+  .section-head h2{font-size:2rem;}
+
+  .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .menu-item{background:var(--charcoal);padding:26px 28px;display:flex;justify-content:space-between;gap:20px;}
+  .menu-item h3{font-size:1.05rem;margin-bottom:6px;}
+  .menu-item p{font-size:0.85rem;opacity:0.65;}
+  .menu-item .price{font-family:'Fraunces',serif;color:var(--mustard);font-size:1.1rem;white-space:nowrap;}
+
+  .about{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:center;}
+  .about-visual{
+    background:var(--forest);aspect-ratio:1;border-radius:4px;border:1px solid var(--line);
+  }
+  .stats{display:flex;gap:40px;margin-top:30px;}
+  .stat b{font-family:'Fraunces',serif;font-size:1.8rem;color:var(--mustard);display:block;}
+  .stat span{font-size:0.82rem;opacity:0.65;}
+
+  .hours-loc{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .info-card{background:var(--charcoal);padding:36px;}
+  .info-card h3{margin-bottom:16px;font-size:1.1rem;}
+  .info-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:0.9rem;}
+  .info-row:last-child{border-bottom:none;}
+
+  footer{border-top:1px solid var(--line);padding:40px 24px;text-align:center;font-size:0.85rem;opacity:0.6;}
+
+  @media(max-width:800px){
+    .navlinks{position:fixed;top:64px;left:0;right:0;background:var(--charcoal);flex-direction:column;
+      padding:20px 24px;border-bottom:1px solid var(--line);display:none;gap:18px;}
+    .navlinks.open{display:flex;}
+    .menu-toggle{display:block;}
+    .hero{grid-template-columns:1fr;padding-top:70px;}
+    .about,.menu-grid,.hours-loc{grid-template-columns:1fr;}
+    .hero-visual{order:-1;aspect-ratio:16/10;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Mama <span>Rasoi</span></div>
+    <div class="navlinks" id="navlinks">
+      <a href="#menu">Menu</a>
+      <a href="#about">Our Story</a>
+      <a href="#visit">Visit</a>
+      <a href="#contact">Order</a>
+    </div>
+    <button class="menu-toggle" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow">Since 2014 · Family Kitchen</span>
+    <h1>Home cooking,<br>the way your<br>nani made it.</h1>
+    <p>Slow-cooked curries, fresh-tandoor bread, and recipes passed down three generations — served daily in the heart of the city.</p>
+    <a href="#contact" class="btn">Order Now</a>
+    <a href="#menu" class="btn-outline">View Menu</a>
+  </div>
+  <div class="hero-visual">
+    <div class="tag"><b>4.8 ★</b>Rated by 900+ locals</div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Menu</span>
+      <h2>A few house favorites</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item"><div><h3>Chicken Karahi</h3><p>Tomato-based, hand-pounded spices</p></div><div class="price">Rs 950</div></div>
+      <div class="menu-item"><div><h3>Daal Mash</h3><p>Slow-simmered black lentils, cream finish</p></div><div class="price">Rs 450</div></div>
+      <div class="menu-item"><div><h3>Seekh Kebab Roll</h3><p>Charcoal-grilled, mint chutney</p></div><div class="price">Rs 380</div></div>
+      <div class="menu-item"><div><h3>Tandoori Roti</h3><p>Fresh from the clay oven</p></div><div class="price">Rs 45</div></div>
+      <div class="menu-item"><div><h3>Biryani (Chicken)</h3><p>Layered basmati, fried onions</p></div><div class="price">Rs 520</div></div>
+      <div class="menu-item"><div><h3>Kheer</h3><p>Rice pudding, pistachio, cardamom</p></div><div class="price">Rs 220</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="about-visual"></div>
+    <div>
+      <span class="eyebrow">Our Story</span>
+      <h2>Started in one small kitchen, still cooking the same way</h2>
+      <p style="opacity:0.75;margin-top:16px;">What began as a single stove and a family recipe book has grown into the neighborhood's go-to spot for real home-style food — no shortcuts, no frozen bases, just the same process every single day.</p>
+      <div class="stats">
+        <div class="stat"><b>10+</b><span>Years serving</span></div>
+        <div class="stat"><b>900+</b><span>Happy regulars</span></div>
+        <div class="stat"><b>0</b><span>Frozen ingredients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Visit Us</span>
+      <h2>Hours &amp; location</h2>
+    </div>
+    <div class="hours-loc">
+      <div class="info-card">
+        <h3>Opening Hours</h3>
+        <div class="info-row"><span>Mon – Fri</span><span>12 PM – 11 PM</span></div>
+        <div class="info-row"><span>Saturday</span><span>12 PM – 12 AM</span></div>
+        <div class="info-row"><span>Sunday</span><span>1 PM – 11 PM</span></div>
+      </div>
+      <div class="info-card">
+        <h3>Find Us</h3>
+        <div class="info-row"><span>Address</span><span>Main Boulevard, City</span></div>
+        <div class="info-row"><span>Phone</span><span>0300-1234567</span></div>
+        <div class="info-row"><span>Delivery</span><span>Yes, via call</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow">Ready to Order?</span>
+    <h2 style="font-size:2rem;margin:14px 0 24px;">Call us or walk in — table for two or takeaway for ten.</h2>
+    <a href="tel:03001234567" class="btn">Call to Order · 0300-1234567</a>
+  </div>
+</section>
+
+<footer>
+  Mama Rasoi — Demo website template built for local restaurants. Replace all text, prices, and contact details with the client's real information.
+</footer>
+
+<script>
+  document.querySelectorAll('.navlinks a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
